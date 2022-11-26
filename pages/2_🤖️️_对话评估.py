@@ -65,12 +65,13 @@ def app():
                         st.warning("请求丢失数据: {}".format(index))
                         continue
 
+                    response = json.loads(result.text)["data"][0]["text"].strip()
                     tmp = {"conversation_id": row["conversation_id"], "data_source": ai_name,
                            "dialog_round": row["dialog_round"], "knowledge": row["knowledge"],
-                           "message": row["message"], "response": json.loads(result.text)["data"][0]["text"]}
+                           "message": row["message"], "response": response}
 
                     tmp1 = {"references": row["response"],
-                            "predictions": json.loads(result.text)["data"][0]["text"]}
+                            "predictions": response}
 
                     dialog_history.loc[len(dialog_history)] = tmp
                     compara_data.loc[len(compara_data)] = tmp1
