@@ -90,7 +90,7 @@ def app():
 
                     dialog_history_csv[i] = convert_df(dialog_history[i])
                     st.download_button('下载AI {}结果数据'.format(i), dialog_history_csv[i],
-                                       file_name="dialogue-{}-{}.csv".format(ai_name[i], datetime.datetime.now().strftime(
+                                       file_name="dialogue-{}-{}.tsv".format(ai_name[i], datetime.datetime.now().strftime(
                                            '%Y-%m-%d_%H-%M-%S')),
                                        mime='text/csv')
 

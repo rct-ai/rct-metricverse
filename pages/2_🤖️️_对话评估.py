@@ -87,7 +87,7 @@ def app():
 
                 dialog_history_csv = convert_df(dialog_history)
                 st.download_button('下载结果数据', dialog_history_csv,
-                                   file_name="dialogue-{}-{}.csv".format(ai_name, datetime.datetime.now().strftime(
+                                   file_name="dialogue-{}-{}.tsv".format(ai_name, datetime.datetime.now().strftime(
                                        '%Y-%m-%d_%H-%M-%S')),
                                    mime='text/csv')
 
@@ -97,7 +97,7 @@ def app():
 
                 compara_data_csv = convert_df(compara_data)
                 st.download_button('下载response对比数据', compara_data_csv,
-                                   file_name="dialogue_response-{}-{}.csv".format(ai_name, datetime.datetime.now().strftime(
+                                   file_name="dialogue_response-{}-{}.tsv".format(ai_name, datetime.datetime.now().strftime(
                                        '%Y-%m-%d_%H-%M-%S')),
                                    mime='text/csv')
 
