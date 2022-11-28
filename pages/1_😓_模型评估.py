@@ -12,6 +12,12 @@ def app():
     st.set_page_config(page_title="model metric", page_icon="😓")
 
     st.write("# Model Metric :ghost:")
+    st.markdown('''
+    ***相关参数说明***
+    - Dialogue Q name: 用户在prompt发送消息的名字
+    - Dialogue A name: AI在prompt回答消息的名字
+    - Prompt Q message: 用户在prompt发送的消息，引出AI的回答
+    ''')
     st.write("## 模型参数配置 ")
     URL = st.text_input("模型请求地址", "http://47.57.69.130:8015/z")
 

@@ -13,6 +13,10 @@ def app():
     st.set_page_config(page_title="dialogue metric", page_icon="🤖️️")
 
     st.write("# Dialogue Metric :ghost:")
+    st.markdown('''
+    ***相关参数说明***
+    - AI NAME: 虚拟人名字
+    ''')
     st.write("## 对话参数配置 ")
     URL = st.text_input("对话请求地址",
                         "https://socrates-api.rct.ai/v1/applications/222/nodes/ed19e08c-8223-4982-b0e1-071635e1847a/conversation")

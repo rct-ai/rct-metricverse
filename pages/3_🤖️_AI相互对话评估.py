@@ -13,6 +13,10 @@ def app():
     st.set_page_config(page_title="dialogue metric", page_icon="🤖️")
 
     st.write("# Dialogue Metric :ghost:")
+    st.markdown('''
+    ***相关参数说明***
+    - AI NAME: 虚拟人名字
+    ''')
     st.write("## 对话参数配置 ")
     URL = {}
     accessKey = {}
