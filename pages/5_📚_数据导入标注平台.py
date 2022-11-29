@@ -15,9 +15,9 @@ def app():
     st.write("# 数据导入标注平台 :books:")
     st.markdown('''
     ***相关说明***
-    
     - 导入label studio，需要获取相关帐号的API_KEY
     - 项目ID可以从URL上获取，如`http://192.168.0.181:9000/projects/87/data?tab=278&page=1`，项目ID为87
+    - label studio项目可以参考，demon的数据标注测试模版
     ''')
     URL = st.text_input("LABEL_STUDIO_URL", LABEL_STUDIO_URL)
     api_key = st.text_input("API_KEY", API_KEY)
