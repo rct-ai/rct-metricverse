@@ -75,6 +75,9 @@ def app():
                     compara_data.loc[len(compara_data)] = tmp1
                     my_bar.progress(round(step * (index + 1)))
 
+            dialog_history['conversation_id'] = dialog_history['conversation_id'].astype("int")
+            dialog_history['dialog_round'] = dialog_history['dialog_round'].astype("int")
+
             if not dialog_history.empty:
                 with st.expander("预览结果数据"):
                     st.dataframe(dialog_history)
