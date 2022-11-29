@@ -12,7 +12,7 @@ from tools import get_test_data, convert_df
 def app():
     st.set_page_config(page_title="dialogue metric", page_icon="🤖️️")
 
-    st.write("# Dialogue Metric :ghost:")
+    st.write("# Dialogue Metric :unamused:")
     st.markdown('''
     ***相关参数说明***
     - AI NAME: 虚拟人名字
@@ -30,12 +30,6 @@ def app():
         data_type = st.radio("准备测试数据",
                              ('使用已有测试数据', '上传测试数据'), horizontal=True)
         test_data = get_test_data(data_type)
-
-        with st.expander("预览测试数据"):
-            if not test_data.empty:
-                st.dataframe(test_data)
-            else:
-                st.write("没有数据")
 
     start = st.button("开始测试")
     if start:
@@ -87,7 +81,7 @@ def app():
 
                 dialog_history_csv = convert_df(dialog_history)
                 st.download_button('下载结果数据', dialog_history_csv,
-                                   file_name="dialogue-{}-{}.tsv".format(ai_name, datetime.datetime.now().strftime(
+                                   file_name="dialogue-{}-{}.csv".format(ai_name, datetime.datetime.now().strftime(
                                        '%Y-%m-%d_%H-%M-%S')),
                                    mime='text/csv')
 
@@ -97,7 +91,7 @@ def app():
 
                 compara_data_csv = convert_df(compara_data)
                 st.download_button('下载response对比数据', compara_data_csv,
-                                   file_name="dialogue_response-{}-{}.tsv".format(ai_name, datetime.datetime.now().strftime(
+                                   file_name="dialogue_response-{}-{}.csv".format(ai_name, datetime.datetime.now().strftime(
                                        '%Y-%m-%d_%H-%M-%S')),
                                    mime='text/csv')
 

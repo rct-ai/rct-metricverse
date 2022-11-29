@@ -10,9 +10,9 @@ from tools import get_test_data, convert_df
 
 
 def app():
-    st.set_page_config(page_title="dialogue metric", page_icon="🤖️")
+    st.set_page_config(page_title="dialogue metric", page_icon="👨‍👩‍👧‍👦")
 
-    st.write("# Dialogue Metric :ghost:")
+    st.write("# Dialogue Metric :kissing_heart:")
     st.markdown('''
     ***相关参数说明***
     - AI NAME: 虚拟人名字
@@ -90,7 +90,7 @@ def app():
 
                     dialog_history_csv[i] = convert_df(dialog_history[i])
                     st.download_button('下载AI {}结果数据'.format(i), dialog_history_csv[i],
-                                       file_name="dialogue-{}-{}.tsv".format(ai_name[i], datetime.datetime.now().strftime(
+                                       file_name="dialogue-{}-{}.csv".format(ai_name[i], datetime.datetime.now().strftime(
                                            '%Y-%m-%d_%H-%M-%S')),
                                        mime='text/csv')
 

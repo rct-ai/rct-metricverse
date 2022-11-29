@@ -21,7 +21,7 @@ def init_metric(option):
 
 def app():
     st.set_page_config(page_title="auto metric", page_icon="📈")
-    st.write("# Auto Metric :ghost:")
+    st.write("# Auto Metric :100:")
     data_type = st.radio("准备测试数据",
                          ('在线测试', '上传测试数据'), horizontal=True)
 
@@ -32,9 +32,11 @@ def app():
         references = []
         predictions = []
         if uploaded_file is not None:
-            test_data = pd.read_csv(uploaded_file, sep="\t")
+            test_data = pd.read_csv(uploaded_file)
             references = test_data["references"].tolist()
             predictions = test_data["predictions"].tolist()
+            with st.expander("预览上传数据"):
+                st.dataframe(test_data)
     else:
         references = st.text_input("样本数据")
         predictions = st.text_input('生成数据')

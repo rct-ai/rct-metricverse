@@ -11,7 +11,7 @@ from tools import fund, get_test_data, convert_df
 def app():
     st.set_page_config(page_title="model metric", page_icon="😓")
 
-    st.write("# Model Metric :ghost:")
+    st.write("# Model Metric :sweat:")
     st.markdown('''
     ***相关参数说明***
     - Dialogue Q name: 用户在prompt发送消息的名字
@@ -45,11 +45,6 @@ def app():
             message = st.text_input("Prompt Q message", "How do you find the book hidden by your aunt?")
         else:
             test_data = get_test_data(data_type)
-            with st.expander("预览测试数据"):
-                if not test_data.empty:
-                    st.dataframe(test_data)
-                else:
-                    st.write("没有数据")
 
     start = st.button("开始测试")
     if start:
@@ -101,8 +96,7 @@ def app():
                            requests.exceptions.SSLError:
                         st.warning("请求丢失数据: {}".format(index))
                         continue
-                    st.text(params["prompt"])
-                    st.write(json.loads(result.text))
+
                     tmp = {"conversation_id": row["conversation_id"], "data_source": data_source,
                            "dialog_round": row["dialog_round"], "knowledge": row["knowledge"],
                            "message": row["message"], "response": json.loads(result.text)["result"]}
@@ -120,7 +114,7 @@ def app():
 
                     dialog_history_csv = convert_df(dialog_history)
                     st.download_button('下载结果数据', dialog_history_csv,
-                                       file_name="dialogue-{}-{}.tsv".format(data_source,
+                                       file_name="dialogue-{}-{}.csv".format(data_source,
                                                                          datetime.datetime.now().strftime(
                                                                              '%Y-%m-%d_%H-%M-%S')),
                                        mime='text/csv')
@@ -131,7 +125,7 @@ def app():
 
                     compara_data_csv = convert_df(compara_data)
                     st.download_button('下载response对比数据', compara_data_csv,
-                                       file_name="dialogue_response-{}-{}.tsv".format(data_source,
+                                       file_name="dialogue_response-{}-{}.csv".format(data_source,
                                                                                   datetime.datetime.now().strftime(
                                                                                       '%Y-%m-%d_%H-%M-%S')),
                                        mime='text/csv')
