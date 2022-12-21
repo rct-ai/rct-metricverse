@@ -12,19 +12,21 @@ RUN apt-get update && apt-get install -y \
     git \
     && rm -rf /var/lib/apt/lists/*
 
-RUN mkdir /root/.ssh/
+#RUN mkdir /root/.ssh/
+#
+## Copy over private key, and set permissions
+## Warning! Anyone who gets their hands on this image will be able
+## to retrieve this private key file from the corresponding image layer
+#ADD id_rsa /root/.ssh/id_rsa
+#
+## Create known_hosts
+#RUN touch /root/.ssh/known_hosts
+## Add bitbuckets key
+#RUN ssh-keyscan github.com >> /root/.ssh/known_hosts
 
-# Copy over private key, and set permissions
-# Warning! Anyone who gets their hands on this image will be able
-# to retrieve this private key file from the corresponding image layer
-ADD id_rsa /root/.ssh/id_rsa
+#RUN git clone git@github.com:rct-ai/rct-metricverse.git .
 
-# Create known_hosts
-RUN touch /root/.ssh/known_hosts
-# Add bitbuckets key
-RUN ssh-keyscan github.com >> /root/.ssh/known_hosts
-
-RUN git clone git@github.com:rct-ai/rct-metricverse.git .
+COPY ./ .
 
 RUN pip3 install -r requirements.txt
 
