@@ -16,7 +16,7 @@ def app():
             st.dataframe(source)
 
         st.title("结果展示")
-        li = ['sensibleness', 'specificity', 'groundedness', 'helpfulness', 'role consistency']
+        li = ['sensibleness', 'specificity', 'Interestingness', 'groundedness', 'helpfulness', 'role consistency']
         data = []
         for l in li:
             data.append(source.groupby(l)[l].count() / len(source))
